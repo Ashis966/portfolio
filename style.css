@@ -5,8 +5,11 @@
     --glass: rgba(255, 255, 255, .25);
 }
 
-html {
+html,
+body {
     scroll-behavior: smooth;
+    overflow-x: hidden;   /* prevent horizontal scroll on all devices */
+    max-width: 100%;
 }
 
 body {
@@ -15,12 +18,45 @@ body {
 
 .navbar {
     box-shadow: 0 6px 24px rgba(0, 0, 0, .06);
+    border-radius: 0 !important;  /* override glass radius — navbar must be flush */
+    width: 100%;
 }
 
 .navbar-brand {
     font-weight: 800;
     letter-spacing: .3px;
 }
+
+/* ── Mobile Resume Button (always visible in navbar) ── */
+.mobile-resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    padding: .38rem .85rem;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .2px;
+    color: #fff;
+    background: linear-gradient(135deg, #0d6efd 0%, #6f42c1 100%);
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 3px 12px rgba(13, 110, 253, .35);
+    transition: transform .2s, box-shadow .2s, opacity .2s;
+    white-space: nowrap;
+}
+
+.mobile-resume-btn:hover,
+.mobile-resume-btn:focus {
+    color: #fff;
+    opacity: .9;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(13, 110, 253, .45);
+}
+
+.mobile-resume-btn:active {
+    transform: scale(.96);
+}
+
 
 .hero {
     background: var(--gradient);
@@ -47,6 +83,12 @@ body {
     box-shadow: 0 14px 40px rgba(13, 110, 253, .14);
     backdrop-filter: blur(12px);
     border: 1.5px solid #fff3;
+}
+
+/* Prevent Bootstrap row gutters from causing horizontal overflow */
+.container,
+.container-fluid {
+    overflow-x: clip;
 }
 
 .section-pad {
@@ -142,4 +184,127 @@ body {
 
 [data-aos].aos-animate {
     opacity: 1;
+}
+
+/* ── Mobile Responsive Spacing ── */
+@media (max-width: 767.98px) {
+
+    /* Hero: reduce top space dramatically */
+    .hero {
+        padding: 2.5rem 0 2rem;
+        margin-bottom: 0 !important;
+    }
+
+    /* All sections: tighter vertical padding */
+    .section-pad {
+        padding: 2.5rem 0;
+    }
+
+    /* Section headings: smaller font on mobile */
+    .section-head {
+        font-size: 1.75rem;
+        margin-bottom: 1.25rem;
+    }
+
+    /* Hero h1: scale down display heading */
+    .hero h1 {
+        font-size: 1.9rem;
+    }
+
+    /* Stat cards: compact padding */
+    .animated-counter {
+        font-size: 2rem;
+    }
+
+    /* Project section header flex wrap */
+    .d-flex.align-items-center.justify-content-between.section-head {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: .5rem;
+    }
+
+    /* Contact card padding */
+    .contact-card,
+    .p-4.p-md-5 {
+        padding: 1.5rem !important;
+    }
+}
+
+/* ── Fixed Resume FAB Button ── */
+.resume-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1050;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7c3aed, #00d4ff);
+    color: #fff;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.35);
+    transition: transform .3s, box-shadow .3s;
+    animation: fab-pulse 2.5s ease-in-out 1s 3;  /* pulse 3 times on load */
+}
+
+.resume-fab:hover,
+.resume-fab:focus {
+    color: #fff;
+    transform: scale(1.12);
+    box-shadow: 0 8px 30px rgba(0, 212, 255, 0.55);
+}
+
+.resume-fab:active {
+    transform: scale(.95);
+}
+
+/* Tooltip label */
+.resume-fab-tooltip {
+    position: absolute;
+    right: 62px;
+    white-space: nowrap;
+    background: rgba(10, 14, 26, 0.92);
+    color: #fff;
+    font-size: .78rem;
+    font-weight: 500;
+    padding: 5px 11px;
+    border-radius: 7px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .2s;
+}
+
+.resume-fab:hover .resume-fab-tooltip {
+    opacity: 1;
+}
+
+/* Pulse animation to draw attention */
+@keyframes fab-pulse {
+    0%   { box-shadow: 0 4px 20px rgba(0, 212, 255, .35); }
+    50%  { box-shadow: 0 4px 32px rgba(0, 212, 255, .75), 0 0 0 10px rgba(0, 212, 255, .12); }
+    100% { box-shadow: 0 4px 20px rgba(0, 212, 255, .35); }
+}
+
+/* Mobile adjustments */
+@media (max-width: 767.98px) {
+    .resume-fab {
+        bottom: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        font-size: 1.15rem;
+    }
+
+    /* Tooltip appears above on mobile so it's not clipped */
+    .resume-fab-tooltip {
+        right: auto;
+        bottom: 58px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
