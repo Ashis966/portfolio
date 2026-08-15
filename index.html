@@ -4,433 +4,996 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ashis Kumar – Full‑Stack Web Developer & Trainer</title>
-    <meta name="description"
-        content="Portfolio of Ashis Kumar – Full‑Stack Web Developer & Trainer skilled in HTML, CSS, Bootstrap, JavaScript, jQuery, PHP, MySQL, Python (Django), and AJAX." />
-    <meta name="author" content="Ashis Kumar" />
-    <!-- Bootstrap 5 + Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- AOS Animation Library -->
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="style.css" />
+    <!-- SEO Meta -->
+    <title>Ashis Kumar – Full‑Stack Web Developer &amp; Trainer</title>
+    <meta name="description"
+        content="Portfolio of Ashis Kumar – Full‑Stack Web Developer &amp; Trainer skilled in HTML, CSS, Bootstrap, JavaScript, jQuery, PHP, MySQL, Python (Django), and AJAX." />
+    <meta name="author" content="Ashis Kumar" />
+    <meta name="keywords"
+        content="Ashis Kumar, Full Stack Developer, Web Developer, Python, Django, PHP, MySQL, React, Bootstrap, Bhubaneswar" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://ashis966.github.io/" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ashis Kumar – Full‑Stack Developer &amp; Trainer" />
+    <meta property="og:description" content="Building scalable web apps with Python, Django, PHP, React &amp; more." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ashis966.github.io/" />
+    <meta property="og:image" content="https://ashis966.github.io/ashis.jpeg" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="600" />
+
+    <!-- Theme Color (browser chrome) -->
+    <meta name="theme-color" content="#0F172A" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230F172A'/><text x='50%25' y='55%25' font-family='Arial' font-weight='bold' font-size='18' fill='%2338BDF8' text-anchor='middle' dominant-baseline='middle'>A.</text></svg>" />
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Font Awesome 6 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+
+    <!-- Custom Stylesheets -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animation.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
 </head>
 
 <body>
-    <!-- HEADER containing Nav and Hero -->
-    <header>
-        <!-- NAVBAR -->
-        <nav class="navbar navbar-expand-lg bg-white sticky-top glass">
-        <div class="container">
-            <a class="navbar-brand" href="#home">Ashis<span class="text-primary">.</span></a>
 
-            <!-- Mobile: Resume btn + toggler grouped on the right -->
+    <!-- ══════════════════════════════════════════════
+         PAGE LOADER
+    ══════════════════════════════════════════════ -->
+    <div id="page-loader" aria-hidden="true">
+        <div class="loader-logo">Ashis<span class="accent">.</span></div>
+        <div class="loader-dots">
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+        </div>
+        <div class="loader-track">
+            <div class="loader-bar"></div>
+        </div>
+        <div class="loader-text">Loading Portfolio</div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Custom Dual Cursor -->
+    <div id="custom-cursor-dot" aria-hidden="true"></div>
+    <div id="custom-cursor-ring" aria-hidden="true"></div>
+
+    <!-- Background Canvas -->
+    <div class="bg-canvas" aria-hidden="true">
+        <div class="bg-grid"></div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+         NAVBAR
+    ══════════════════════════════════════════════ -->
+    <nav id="mainNav" class="navbar navbar-expand-lg" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand navbar-brand-text" href="#home" aria-label="Ashis Kumar – Home">
+                Ashis<span class="accent">.</span>
+            </a>
+
+            <!-- Mobile: Resume + Toggler -->
             <div class="d-flex align-items-center gap-2 d-lg-none ms-auto">
-                <a href="resume.html" target="_blank" class="mobile-resume-btn">
-                    <i class="bi bi-file-earmark-person"></i> Resume
+                <!-- Theme Toggle (mobile) -->
+                <button id="themeToggleMobile" class="theme-toggle-btn" aria-label="Toggle theme">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
+                <a href="resume.html" target="_blank" rel="noopener" class="btn-glow"
+                    style="padding:0.45rem 1rem;font-size:0.78rem;" aria-label="View Resume">
+                    <i class="bi bi-file-earmark-person"></i>
+                    <span>Resume</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler-custom navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="bi bi-grid-3x3-gap-fill fs-5"></i>
                 </button>
             </div>
 
+            <!-- Nav Links -->
             <div class="collapse navbar-collapse" id="navMenu">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-1">
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#contact">Contact</a></li>
                 </ul>
-                <!-- Desktop only -->
-                <a href="resume.html" target="_blank" class="btn btn-primary ms-lg-3 download-resume d-none d-lg-inline-flex align-items-center gap-1">
-                    <i class="bi bi-file-earmark-person"></i> View Resume
-                </a>
+                <!-- Desktop Resume + Theme Toggle -->
+                <div class="d-none d-lg-flex align-items-center gap-2 ms-lg-3">
+                    <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle theme"
+                        title="Switch to Light Mode">
+                        <i class="bi bi-sun-fill" id="themeIcon"></i>
+                    </button>
+                    <a href="resume.html" target="_blank" rel="noopener" class="btn-glow" aria-label="View Resume">
+                        <i class="bi bi-file-earmark-person"></i>
+                        <span>View Resume</span>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
-        <!-- HERO -->
-        <section id="home" class="hero glass">
+    <!-- ══════════════════════════════════════════════
+         HERO SECTION
+    ══════════════════════════════════════════════ -->
+    <section id="home" aria-label="Hero">
+
+        <!-- Floating Shapes -->
+        <div class="hero-bg-shapes" aria-hidden="true">
+            <div class="hero-shape hero-shape-1"></div>
+            <div class="hero-shape hero-shape-2"></div>
+            <div class="hero-shape hero-shape-3"></div>
+            <div class="hero-shape hero-shape-4"></div>
+        </div>
+
         <div class="container">
-            <div class="row align-items-center g-4">
-                <div class="col-lg-7" data-aos="fade-up">
-                    <span class="tag mb-3 d-inline-flex align-items-center gap-2"><i class="bi bi-rocket"></i>
-                        Full‑Stack Web Developer & Trainer</span>
-                    <h1 class="display-5 fw-bold mt-3 text-black">Hi, I'm <span>Ashis Kumar</span>.<br />I build clean
-                        web apps.
+            <div class="row align-items-center g-5">
+
+                <!-- Text Column -->
+                <div class="col-lg-7">
+                    <div class="hero-eyebrow">
+                        <span class="hero-eyebrow-dot"></span>
+                        Full‑Stack Developer & Technical Trainer
+                    </div>
+
+                    <h1 class="hero-name">
+                        Hi, I'm <span class="name-gradient">Ashis Kumar</span>.
                     </h1>
-                    <p class="lead mt-3 mb-4 text-secondary">Experienced in developing scalable web applications using
-                        Python, Django, PHP, MySQL, React.js, Next.js, and JavaScript. I also mentor students to ship
-                        real projects.</p>
-                    <div class="d-flex flex-wrap gap-2">
-                        <a href="#projects" class="btn btn-primary"><i class="bi bi-box-seam me-1"></i> View
-                            Projects</a>
-                        <a href="#contact" class="btn btn-outline-primary"><i class="bi bi-envelope me-1"></i> Hire
-                            Me</a>
+
+                    <div class="hero-typed-wrap">
+                        <span id="typed-text"></span>
                     </div>
+
+                    <p class="hero-desc">
+                        Experienced in building scalable web applications, ERP systems, and business solutions
+                        using Python, Django, PHP, MySQL, React.js, Next.js, and JavaScript.
+                        I also mentor students and teams to ship real-world projects.
+                    </p>
+
+                    <div class="hero-cta-group">
+                        <a href="#projects" class="btn-glow" id="viewProjectsBtn">
+                            <i class="bi bi-box-seam"></i>
+                            <span>View Projects</span>
+                        </a>
+                        <a href="#contact" class="btn-outline-glow" id="hireMeBtn">
+                            <i class="bi bi-envelope"></i>
+                            <span>Hire Me</span>
+                        </a>
+                        <a href="https://github.com/Ashis966" target="_blank" rel="noopener" class="btn-outline-glow"
+                            id="githubProfileBtn" aria-label="GitHub Profile">
+                            <i class="bi bi-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+
                 </div>
-                <div class="col-lg-5 text-center" data-aos="zoom-in">
-                    <div class="bg-white glass shadow-soft rounded-2xl p-4 text-center">
-                        <img src="ashis.jpeg" alt="Laptop workspace" class="img-fluid rounded-2" />
+
+                <!-- Image Column -->
+                <div class="col-lg-5 text-center hero-image-wrap">
+                    <div class="hero-image-ring">
+                        <img src="ashis.jpeg" alt="Ashis Kumar – Full‑Stack Developer" class="hero-profile-img"
+                            loading="eager" />
+
+                        <!-- Floating badges -->
+                        <div class="hero-image-badge badge-top-right">
+                            <i class="bi bi-code-slash"></i> Full‑Stack Dev
+                        </div>
+                        <div class="hero-image-badge badge-bottom-left">
+                            <i class="bi bi-mortarboard-fill"></i> Tech Trainer
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        </section>
-    </header>
+    </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section-pad">
+    <!-- ══════════════════════════════════════════════
+         ABOUT SECTION
+    ══════════════════════════════════════════════ -->
+    <section id="about" class="section-pad" aria-label="About">
         <div class="container">
-            <div class="row align-items-center g-4">
-                <div class="col-lg-6" data-aos="fade-up">
-                    <h2 class="section-head">About Me</h2>
-                    <p>Full Stack Developer & Technical Trainer with hands-on experience in developing scalable web
-                        applications, ERP systems, Sales & Employee Management Systems, eCommerce platforms, and
-                        business websites.</p>
-                    <ul class="list-unstyled mt-3">
-                        <li class="mb-2"><i class="bi bi-check2-circle text-primary me-2"></i> Currently at
-                            <strong>Techzex Software Pvt Ltd</strong> (Developer & Trainer)
-                        </li>
-                        <li class="mb-2"><i class="bi bi-check2-circle text-primary me-2"></i> Guest Trainer
-                            <strong>Across Multiple Colleges.</strong>
-                        </li>
-                        <li class="mb-2"><i class="bi bi-check2-circle text-primary me-2"></i> B.Tech (Electrical
-                            Engineering), 2018 – EATM</li>
-                    </ul>
-                    <div class="d-flex gap-2 mt-3">
-                        <a href="mailto:ashis966@gmail.com" class="btn btn-outline-secondary"><i
-                                class="bi bi-envelope"></i> Email</a>
-                        <a href="tel:+917008438639" class="btn btn-outline-secondary"><i class="bi bi-telephone"></i>
-                            Call</a>
-                        <a href="https://www.linkedin.com/in/ashis966" target="_blank"
-                            class="btn btn-outline-secondary"><i class="bi bi-linkedin"></i> LinkedIn</a>
-                        <a href="https://github.com/Ashis966" target="_blank" class="btn btn-outline-secondary"><i
-                                class="bi bi-github"></i> GitHub</a>
-                    </div>
-                </div>
+            <div class="row align-items-center g-5">
+
                 <div class="col-lg-6">
-                    <div class="row g-3">
-                        <div class="col-6" data-aos="fade-zoom-in">
-                            <div class="p-4 bg-white glass rounded-2xl shadow-soft text-center h-100">
-                                <div class="animated-counter" data-start-year="2024">0</div>
-                                <div class="text-secondary">Years Experience</div>
-                            </div>
-                        </div>
-                        <div class="col-6" data-aos="fade-zoom-in" data-aos-delay="50">
-                            <div class="p-4 bg-white glass rounded-2xl shadow-soft text-center h-100">
-                                <div class="animated-counter" data-count="30">0</div>
-                                <div class="text-secondary">Teams Mentored</div>
-                            </div>
-                        </div>
-                        <div class="col-6" data-aos="fade-zoom-in" data-aos-delay="100">
-                            <div class="p-4 bg-white glass rounded-2xl shadow-soft text-center h-100">
-                                <div class="animated-counter" data-count="10">0</div>
-                                <div class="text-secondary">Live Projects</div>
-                            </div>
-                        </div>
-                        <div class="col-6" data-aos="fade-zoom-in" data-aos-delay="150">
-                            <div class="p-4 bg-white glass rounded-2xl shadow-soft text-center h-100">
-                                <div class="animated-counter" data-count="100">0</div>
-                                <div class="text-secondary">Client Focus</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <div class="reveal-left">
+                        <p class="section-label">Get to Know Me</p>
+                        <h2 class="section-title">About Me</h2>
+                        <p class="about-intro-text">
+                            Full Stack Developer & Technical Trainer with hands-on experience developing
+                            scalable web applications, ERP systems, Sales & Employee Management Systems,
+                            eCommerce platforms, and business websites.
+                        </p>
+                        <p class="about-intro-text">
+                            I enjoy bridging the gap between complex back-end logic and clean, intuitive
+                            user experiences — and love teaching the next generation of developers.
+                        </p>
 
-    <!-- SKILLS -->
-    <section id="skills" class="section-pad bg-light">
-        <div class="container">
-            <h2 class="section-head">Skills</h2>
-            <div class="d-flex flex-wrap justify-content-center" data-aos="fade-up">
-                <span class="skill-badge"><i class="bi bi-filetype-py"></i> Python</span>
-                <span class="skill-badge"><i class="bi bi-terminal"></i> PHP</span>
-                <span class="skill-badge"><i class="bi bi-filetype-js"></i> JavaScript</span>
-                <span class="skill-badge"><i class="bi bi-filetype-html"></i> HTML5</span>
-                <span class="skill-badge"><i class="bi bi-filetype-css"></i> CSS3</span>
-                <span class="skill-badge"><i class="bi bi-cpu"></i> Django</span>
-                <span class="skill-badge"><i class="bi bi-code-slash"></i> React.js</span>
-                <span class="skill-badge"><i class="bi bi-lightning"></i> Next.js</span>
-                <span class="skill-badge"><i class="bi bi-bootstrap"></i> Bootstrap</span>
-                <span class="skill-badge"><i class="bi bi-palette"></i> Tailwind CSS</span>
-                <span class="skill-badge"><i class="bi bi-database"></i> MySQL</span>
-                <span class="skill-badge"><i class="bi bi-database-down"></i> SQLite</span>
-                <span class="skill-badge"><i class="bi bi-git"></i> Git/GitHub</span>
-                <span class="skill-badge"><i class="bi bi-arrow-left-right"></i> REST API</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section-pad">
-        <div class="container">
-            <div class="d-flex align-items-center justify-content-between section-head">
-                <h2 class="mb-0">Projects</h2>
-                <a class="btn btn-outline-primary btn-sm" href="https://github.com/Ashis966" target="_blank"><i
-                        class="bi bi-github me-1"></i> View All</a>
-            </div>
-            <div class="row g-4">
-                <!-- Project 1 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <div class="card h-100 project-card glass rounded-2xl">
-                        <img src="https://placehold.co/1200x800/0d6efd/ffffff?text=Sales+Management+System"
-                            class="card-img-top" alt="Sales Management System" />
-                        <div class="card-body">
-                            <h5 class="card-title">Sales Management System</h5>
-                            <p class="card-text text-secondary">Comprehensive sales and billing management system for
-                                invoices, customers, suppliers, products, and reports.</p>
-                            <div class="mt-2 text-primary small">
-                                <strong>Stack:</strong> PHP, MySQL, JavaScript, Bootstrap
-                            </div>
-                            <ul class="small text-secondary mt-2 ps-3 mb-0">
-                                <li>Invoice generation and printing</li>
-                                <li>Customer &amp; supplier management</li>
-                                <li>Product inventory tracking</li>
-                                <li>Due payment management</li>
-                                <li>Sales reporting and analytics</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100 project-card glass rounded-2xl">
-                        <img src="https://placehold.co/1200x800/198754/ffffff?text=Employee+Management"
-                            class="card-img-top" alt="Employee Management System" />
-                        <div class="card-body">
-                            <h5 class="card-title">Employee Management System</h5>
-                            <p class="card-text text-secondary">Complete employee management platform for handling
-                                records, salary structures, documentation, and account management.</p>
-                            <div class="mt-2 text-primary small">
-                                <strong>Stack:</strong> PHP, MySQL, Bootstrap
-                            </div>
-                            <ul class="small text-secondary mt-2 ps-3 mb-0">
-                                <li>Employee profile management</li>
-                                <li>Salary and payroll components</li>
-                                <li>Employee document uploads</li>
-                                <li>Biometric ID management</li>
-                                <li>Employee role &amp; status management</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card h-100 project-card glass rounded-2xl">
-                        <img src="https://placehold.co/1200x800/dc3545/ffffff?text=E-Commerce+Website"
-                            class="card-img-top" alt="E-Commerce Website" />
-                        <div class="card-body">
-                            <h5 class="card-title">E-Commerce Website</h5>
-                            <p class="card-text text-secondary">Online shopping platform with user authentication,
-                                product management, and order processing functionality.</p>
-                            <div class="mt-2 text-primary small">
-                                <strong>Stack:</strong> Django, Python, Bootstrap, JavaScript
-                            </div>
-                            <ul class="small text-secondary mt-2 ps-3 mb-0">
-                                <li>Product catalog management</li>
-                                <li>User registration and login</li>
-                                <li>Shopping cart functionality</li>
-                                <li>Order management system</li>
-                                <li>Responsive user interface</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- Project 4 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <div class="card h-100 project-card glass rounded-2xl">
-                        <img src="https://placehold.co/1200x800/0dcaf0/ffffff?text=Samhita+Wellness"
-                            class="card-img-top" alt="Samhita Wellness Website" />
-                        <div class="card-body">
-                            <h5 class="card-title">Samhita Wellness Website</h5>
-                            <p class="card-text text-secondary">Wellness and healthcare website with service categories,
-                                blog sections, and health tools like a BMI calculator.</p>
-                            <div class="mt-2 text-primary small">
-                                <strong>Stack:</strong> HTML, CSS, Bootstrap, JavaScript
-                            </div>
-                            <ul class="small text-secondary mt-2 ps-3 mb-0">
-                                <li>Dynamic navigation structure</li>
-                                <li>Service &amp; treatment pages</li>
-                                <li>BMI calculator tool</li>
-                                <li>Gallery and blog integration</li>
-                                <li>Fully responsive design</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- Project 5 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100 project-card glass rounded-2xl">
-                        <img src="https://placehold.co/1200x800/6610f2/ffffff?text=Portfolio+Sites"
-                            class="card-img-top" alt="Modern Portfolio & Business Sites" />
-                        <div class="card-body">
-                            <h5 class="card-title">Modern Portfolio Sites</h5>
-                            <p class="card-text text-secondary">Modern portfolio and business websites with advanced
-                                animations, responsive layouts, and interactive experiences.</p>
-                            <div class="mt-2 text-primary small">
-                                <strong>Stack:</strong> React.js, Next.js, Tailwind, Motion.dev
-                            </div>
-                            <ul class="small text-secondary mt-2 ps-3 mb-0">
-                                <li>Modern animations &amp; transitions</li>
-                                <li>Scroll-based interactions</li>
-                                <li>SEO-friendly implementation</li>
-                                <li>Performance optimization</li>
-                                <li>Responsive design</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- Project 6 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card h-100 project-card glass rounded-2xl">
-                        <img src="https://placehold.co/1200x800/6f42c1/ffffff?text=School+ERP"
-                            class="card-img-top" alt="School Management ERP" />
-                        <div class="card-body">
-                            <h5 class="card-title">School Management ERP</h5>
-                            <p class="card-text text-secondary">A complete cloud-based platform to automate academic, administrative, financial, transport, and communication operations.</p>
-                            <div class="mt-2 text-primary small">
-                                <strong>Stack:</strong> PHP, MySQL, Tailwind CSS, JavaScript
-                            </div>
-                            <ul class="small text-secondary mt-2 ps-3 mb-0">
-                                <li>Academic &amp; Exam Management</li>
-                                <li>Student &amp; Staff Administration</li>
-                                <li>Financial &amp; Fee Tracking</li>
-                                <li>Transport &amp; Hostel Management</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- Project 7 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <div class="card h-100 project-card glass rounded-2xl">
-                        <img src="https://placehold.co/1200x800/fd7e14/ffffff?text=Car+Workshop+System"
-                            class="card-img-top" alt="Car Workshop Management System" />
-                        <div class="card-body">
-                            <h5 class="card-title">Car Workshop Management System</h5>
-                            <p class="card-text text-secondary">Complete SaaS solution for car workshop management including job cards, billing, and inventory tracking.</p>
-                            <div class="mt-2 text-primary small">
-                                <strong>Stack:</strong> PHP, MySQL, Tailwind CSS, JavaScript
-                            </div>
-                            <ul class="small text-secondary mt-2 ps-3 mb-0">
-                                <li>Job Card Management</li>
-                                <li>Invoicing &amp; Billing</li>
-                                <li>Inventory &amp; Stock Tracking</li>
-                                <li>Financial Reporting</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- Project 8 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100 project-card glass rounded-2xl">
-                        <img src="https://placehold.co/1200x800/20c997/ffffff?text=Used+Vehicle+Management"
-                            class="card-img-top" alt="Used Vehicle Management System" />
-                        <div class="card-body">
-                            <h5 class="card-title">Used Vehicle Management</h5>
-                            <p class="card-text text-secondary">Platform for managing second-hand vehicle inventory, sales, customer inquiries, and vehicle documentation.</p>
-                            <div class="mt-2 text-primary small">
-                                <strong>Stack:</strong> PHP, MySQL, Bootstrap
-                            </div>
-                            <ul class="small text-secondary mt-2 ps-3 mb-0">
-                                <li>Vehicle Inventory Tracking</li>
-                                <li>Sales &amp; Purchase Management</li>
-                                <li>Customer Inquiry Handling</li>
-                                <li>Document Verification Tracking</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section-pad bg-light">
-        <div class="container">
-            <h2 class="section-head">Experience</h2>
-            <div class="timeline mt-4">
-                <div class="timeline-item" data-aos="fade-left">
-                    <h5 class="mb-1">Full‑Stack Developer & Technical Trainer – <span class="text-primary">Techzex
-                            Software Pvt
-                            Ltd</span></h5>
-                    <div class="text-secondary small mb-2">2024 – Present · Bhubaneswar</div>
-                    <p class="text-primary small mb-1 fw-bold mt-3"><i class="bi bi-braces"></i> Development
-                        Responsibilities</p>
-                    <ul class="text-secondary">
-                        <li>Design, develop, and maintain web applications using Python, Django, PHP, MySQL, React.js,
-                            Next.js, JavaScript, HTML, CSS, and Bootstrap.</li>
-                        <li>Develop ERP systems, Employee Management Systems, Sales Management Systems, and custom
-                            business solutions.</li>
-                        <li>Integrate third-party APIs and external services into applications.</li>
-                        <li>Manage source code using Git and GitHub with version control best practices.</li>
-                    </ul>
-                    <p class="text-primary small mb-1 fw-bold mt-3"><i class="bi bi-mortarboard"></i> Training &
-                        Mentorship</p>
-                    <ul class="mb-0 text-secondary">
-                        <li>Conduct technical training sessions on Python, Django, PHP, HTML, CSS, JavaScript,
-                            Bootstrap, and MySQL (Including sessions at NIT Institute, Chandaka).</li>
-                        <li>Mentor students and interns on real-world web development projects, debugging, and
-                            deployment.</li>
-                        <li>Prepare students for industry requirements and technical interviews.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section-pad">
-        <div class="container">
-            <div class="row g-4 align-items-stretch">
-                <div class="col-lg-6" data-aos="fade-up">
-                    <div class="p-4 p-md-5 rounded-2xl shadow-soft contact-card h-100 glass">
-                        <h2 class="fw-bold mb-3">Let’s build something great</h2>
-                        <p class="text-secondary">Open to full‑time roles (Bhubaneswar/Remote) and freelance projects.
-                            Usually reply within a day.</p>
-                        <ul class="list-unstyled mt-3">
-                            <li class="mb-2"><i class="bi bi-envelope text-primary me-2"></i> <a
-                                    href="mailto:ashis966@gmail.com">ashis966@gmail.com</a></li>
-                            <li class="mb-2"><i class="bi bi-telephone text-primary me-2"></i> <a
-                                    href="tel:+917008438639">+91 70084 38639</a></li>
-                            <li class="mb-2"><i class="bi bi-linkedin text-primary me-2"></i> <a
-                                    href="https://www.linkedin.com/in/ashis966"
-                                    target="_blank">linkedin.com/in/ashis966</a></li>
-                            <li class="mb-2"><i class="bi bi-github text-primary me-2"></i> <a
-                                    href="https://github.com/Ashis966" target="_blank">github.com/Ashis966</a></li>
+                        <ul class="about-highlights">
+                            <li>
+                                <i class="bi bi-buildings-fill hi-icon"></i>
+                                <div>
+                                    Currently at <strong>Techzex Software Pvt Ltd</strong>
+                                    as Developer &amp; Technical Trainer
+                                </div>
+                            </li>
+                            <li>
+                                <i class="bi bi-mortarboard-fill hi-icon"></i>
+                                <div>Guest Trainer across <strong>Multiple Colleges</strong></div>
+                            </li>
+                            <li>
+                                <i class="bi bi-award-fill hi-icon"></i>
+                                <div>B.Tech in Electrical Engineering – <strong>EATM, 2018</strong></div>
+                            </li>
+                            <li>
+                                <i class="bi bi-geo-alt-fill hi-icon"></i>
+                                <div>Open to full-time roles in <strong>Bhubaneswar / Remote</strong> &amp; freelance
+                                </div>
+                            </li>
                         </ul>
+
+                        <div class="about-cta-row">
+                            <a href="resume.html" target="_blank" rel="noopener" class="btn-glow"
+                                id="downloadResumeBtn">
+                                <i class="bi bi-file-earmark-person"></i>
+                                <span>View Resume</span>
+                            </a>
+                            <a href="#contact" class="btn-outline-glow">
+                                <i class="bi bi-envelope"></i>
+                                <span>Let's Talk</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="p-4 p-md-5 rounded-2xl shadow-soft bg-white h-100 glass">
-                        <h4 class="fw-bold mb-3">Quick Contact Form</h4>
-                        <!-- To make this work, sign up at formspree.io and replace YOUR_FORM_ID below -->
-                        <form id="contactForm" action="https://formspree.io/f/mwvdzepy" method="POST">
-                            <div class="mb-3">
-                                <label class="form-label">Your Name</label>
-                                <input type="text" class="form-control" name="name" required />
+
+                <div class="col-lg-6">
+                    <div class="reveal-right about-right-col">
+
+                        <!-- Stats grid -->
+                        <div class="about-stats-grid">
+                            <div class="about-stat-card">
+                                <div class="about-stat-value counter-value about-stat" data-start-year="2024">0</div>
+                                <div class="about-stat-label">Years Experience</div>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-control" name="email" required />
+                            <div class="about-stat-card">
+                                <div class="about-stat-value counter-value about-stat" data-count="20" data-suffix="+">0
+                                </div>
+                                <div class="about-stat-label">Live Projects</div>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">Message</label>
-                                <textarea class="form-control" name="message" rows="4" required></textarea>
+                            <div class="about-stat-card">
+                                <div class="about-stat-value counter-value about-stat" data-count="30" data-suffix="+">0
+                                </div>
+                                <div class="about-stat-label">Teams Mentored</div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Send Message</button>
+                            <div class="about-stat-card">
+                                <div class="about-stat-value counter-value about-stat" data-count="14" data-suffix="+">0
+                                </div>
+                                <div class="about-stat-label">Technologies</div>
+                            </div>
+                        </div>
+
+                        <div class="about-social-row">
+                            <a href="mailto:ashis966@gmail.com" class="social-btn" aria-label="Email Ashis">
+                                <i class="bi bi-envelope"></i> ashis966@gmail.com
+                            </a>
+                            <a href="tel:+917008438639" class="social-btn" aria-label="Call Ashis">
+                                <i class="bi bi-telephone"></i> +91 70084 38639
+                            </a>
+                            <a href="https://www.linkedin.com/in/ashis966" target="_blank" rel="noopener"
+                                class="social-btn" aria-label="LinkedIn Profile">
+                                <i class="bi bi-linkedin"></i> LinkedIn
+                            </a>
+                            <a href="https://github.com/Ashis966" target="_blank" rel="noopener" class="social-btn"
+                                aria-label="GitHub Profile">
+                                <i class="bi bi-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         SERVICES SECTION
+    ══════════════════════════════════════════════ -->
+    <section id="services" class="section-pad" aria-label="Services">
+        <div class="container">
+            <div class="text-center reveal">
+                <p class="section-label">What I Offer</p>
+                <h2 class="section-title mx-auto" style="max-width:520px;">
+                    Services & Expertise
+                </h2>
+                <p class="section-subtitle mx-auto">
+                    From idea to deployment — I build complete, production-ready solutions.
+                </p>
+            </div>
+
+            <div class="row g-4 stagger-children">
+                <!-- Service 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="service-icon-wrap">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3 class="service-title">Full‑Stack Development</h3>
+                        <p class="service-desc">
+                            End-to-end web applications built with Python/Django, PHP, React.js, Next.js,
+                            JavaScript, HTML5, CSS3, Bootstrap and MySQL.
+                        </p>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="service-icon-wrap">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <h3 class="service-title">ERP & Business Systems</h3>
+                        <p class="service-desc">
+                            Custom ERP solutions, Sales Management Systems, Employee Management, School ERPs,
+                            and SaaS platforms for various industries.
+                        </p>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="service-icon-wrap">
+                            <i class="fa-solid fa-plug"></i>
+                        </div>
+                        <h3 class="service-title">API Integration</h3>
+                        <p class="service-desc">
+                            Design and integrate REST APIs, third-party service integrations, and backend
+                            systems into scalable web applications.
+                        </p>
+                    </div>
+                </div>
+                <!-- Service 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="service-icon-wrap">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                        </div>
+                        <h3 class="service-title">Technical Training</h3>
+                        <p class="service-desc">
+                            Hands-on training sessions on Python, Django, PHP, JavaScript, Bootstrap &
+                            MySQL for students, interns, and teams.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         SKILLS SECTION
+    ══════════════════════════════════════════════ -->
+    <section id="skills" class="section-pad" aria-label="Skills">
+        <div class="container">
+            <div class="text-center reveal">
+                <p class="section-label">Tech Stack</p>
+                <h2 class="section-title">Skills & Technologies</h2>
+                <p class="section-subtitle mx-auto">
+                    A curated set of technologies I use to build fast, scalable, and maintainable products.
+                </p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="skills-filter" role="group" aria-label="Filter skills by category">
+                <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+                <button class="filter-btn" data-filter="backend" aria-pressed="false">Backend</button>
+                <button class="filter-btn" data-filter="frontend" aria-pressed="false">Frontend</button>
+                <button class="filter-btn" data-filter="database" aria-pressed="false">Database</button>
+                <button class="filter-btn" data-filter="tools" aria-pressed="false">Tools</button>
+            </div>
+
+            <div class="row g-3 stagger-children" id="skillsGrid">
+                <!-- Backend Skills -->
+                <div class="col-6 col-md-4 col-lg-3 skill-item" data-category="backend">
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="bi bi-filetype-py"></i></div>
+                            <div>
+                                <div class="skill-name">Python</div>
+                                <div class="skill-level">Advanced</div>
+                            </div>
+                        </div>
+                        <div class="skill-progress-wrap">
+                            <div class="skill-progress-bar" data-progress="88"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3 skill-item" data-category="backend">
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="bi bi-cpu"></i></div>
+                            <div>
+                                <div class="skill-name">Django</div>
+                                <div class="skill-level">Advanced</div>
+                            </div>
+                        </div>
+                        <div class="skill-progress-wrap">
+                            <div class="skill-progress-bar" data-progress="85"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3 skill-item" data-category="backend">
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="bi bi-terminal"></i></div>
+                            <div>
+                                <div class="skill-name">PHP</div>
+                                <div class="skill-level">Advanced</div>
+                            </div>
+                        </div>
+                        <div class="skill-progress-wrap">
+                            <div class="skill-progress-bar" data-progress="90"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3 skill-item" data-category="tools">
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="bi bi-arrow-left-right"></i></div>
+                            <div>
+                                <div class="skill-name">REST API</div>
+                                <div class="skill-level">Advanced</div>
+                            </div>
+                        </div>
+                        <div class="skill-progress-wrap">
+                            <div class="skill-progress-bar" data-progress="82"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frontend Skills -->
+                <div class="col-6 col-md-4 col-lg-3 skill-item" data-category="frontend">
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="bi bi-filetype-js"></i></div>
+                            <div>
+                                <div class="skill-name">JavaScript</div>
+                                <div class="skill-level">Advanced</div>
+                            </div>
+                        </div>
+                        <div class="skill-progress-wrap">
+                            <div class="skill-progress-bar" data-progress="85"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3 skill-item" data-category="frontend">
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="bi bi-filetype-html"></i></div>
+                            <div>
+                                <div class="skill-name">HTML5</div>
+                                <div class="skill-level">Expert</div>
+                            </div>
+                        </div>
+                        <div class="skill-progress-wrap">
+                            <div class="skill-progress-bar" data-progress="95"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3 skill-item" data-category="frontend">
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="bi bi-filetype-css"></i></div>
+                            <div>
+                                <div class="skill-name">CSS3</div>
+                                <div class="skill-level">Expert</div>
+                            </div>
+                        </div>
+                        <div class="skill-progress-wrap">
+                            <div class="skill-progress-bar" data-progress="93"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3 skill-item" data-category="frontend">
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="bi bi-bootstrap"></i></div>
+                            <div>
+                                <div class="skill-name">Bootstrap</div>
+                                <div class="skill-level">Expert</div>
+                            </div>
+                        </div>
+                        <div class="skill-progress-wrap">
+                            <div class="skill-progress-bar" data-progress="95"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3 skill-item" data-category="frontend">
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="bi bi-code-slash"></i></div>
+                            <div>
+                                <div class="skill-name">React.js</div>
+                                <div class="skill-level">Intermediate</div>
+                            </div>
+                        </div>
+                        <div class="skill-progress-wrap">
+                            <div class="skill-progress-bar" data-progress="72"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3 skill-item" data-category="frontend">
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="bi bi-lightning"></i></div>
+                            <div>
+                                <div class="skill-name">Next.js</div>
+                                <div class="skill-level">Intermediate</div>
+                            </div>
+                        </div>
+                        <div class="skill-progress-wrap">
+                            <div class="skill-progress-bar" data-progress="68"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3 skill-item" data-category="frontend">
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="bi bi-palette"></i></div>
+                            <div>
+                                <div class="skill-name">Tailwind CSS</div>
+                                <div class="skill-level">Intermediate</div>
+                            </div>
+                        </div>
+                        <div class="skill-progress-wrap">
+                            <div class="skill-progress-bar" data-progress="75"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database -->
+                <div class="col-6 col-md-4 col-lg-3 skill-item" data-category="database">
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="bi bi-database"></i></div>
+                            <div>
+                                <div class="skill-name">MySQL</div>
+                                <div class="skill-level">Advanced</div>
+                            </div>
+                        </div>
+                        <div class="skill-progress-wrap">
+                            <div class="skill-progress-bar" data-progress="88"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3 skill-item" data-category="database">
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="bi bi-database-down"></i></div>
+                            <div>
+                                <div class="skill-name">SQLite</div>
+                                <div class="skill-level">Intermediate</div>
+                            </div>
+                        </div>
+                        <div class="skill-progress-wrap">
+                            <div class="skill-progress-bar" data-progress="78"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="col-6 col-md-4 col-lg-3 skill-item" data-category="tools">
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="bi bi-git"></i></div>
+                            <div>
+                                <div class="skill-name">Git / GitHub</div>
+                                <div class="skill-level">Advanced</div>
+                            </div>
+                        </div>
+                        <div class="skill-progress-wrap">
+                            <div class="skill-progress-bar" data-progress="85"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         PROJECTS SECTION
+    ══════════════════════════════════════════════ -->
+    <section id="projects" class="section-pad" aria-label="Projects">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4 reveal">
+                <div>
+                    <p class="section-label">Portfolio</p>
+                    <h2 class="section-title mb-0">Featured Projects</h2>
+                </div>
+
+            </div>
+            <div class="row g-4" id="projectsGrid">
+                <!-- Project 1: Sales Management -->
+                <div class="col-md-6 col-lg-4 project-item" data-category="php">
+                    <div class="project-card h-100">
+                        <div class="project-img-wrap">
+                            <img src="https://placehold.co/1200x800/0f172a/38bdf8?text=Sales+Management"
+                                alt="Sales Management System" loading="lazy" />
+                            <div class="project-img-overlay"></div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Sales Management System</h3>
+                            <p class="project-desc">
+                                Comprehensive sales and billing management system covering invoices,
+                                customers, suppliers, products, due payments, and analytics reports.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">PHP</span>
+                                <span class="project-tag">MySQL</span>
+                                <span class="project-tag">JavaScript</span>
+                                <span class="project-tag">Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Employee Management -->
+                <div class="col-md-6 col-lg-4 project-item" data-category="php">
+                    <div class="project-card h-100">
+                        <div class="project-img-wrap">
+                            <img src="https://placehold.co/1200x800/0f172a/06b6d4?text=Employee+Management"
+                                alt="Employee Management System" loading="lazy" />
+                            <div class="project-img-overlay"></div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Employee Management System</h3>
+                            <p class="project-desc">
+                                Complete employee management platform handling records, salary structures,
+                                documentation, biometric ID, and role management.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">PHP</span>
+                                <span class="project-tag">MySQL</span>
+                                <span class="project-tag">Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: E-Commerce -->
+                <div class="col-md-6 col-lg-4 project-item" data-category="python">
+                    <div class="project-card h-100">
+                        <div class="project-img-wrap">
+                            <img src="https://placehold.co/1200x800/0f172a/818cf8?text=E-Commerce+Website"
+                                alt="E-Commerce Website" loading="lazy" />
+                            <div class="project-img-overlay"></div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">E-Commerce Website</h3>
+                            <p class="project-desc">
+                                Online shopping platform with user authentication, product management,
+                                shopping cart, and order processing functionality.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Django</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Bootstrap</span>
+                                <span class="project-tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Samhita Wellness -->
+                <div class="col-md-6 col-lg-4 project-item" data-category="html">
+                    <div class="project-card h-100">
+                        <div class="project-img-wrap">
+                            <img src="https://placehold.co/1200x800/0f172a/22d3ee?text=Samhita+Wellness"
+                                alt="Samhita Wellness Website" loading="lazy" />
+                            <div class="project-img-overlay"></div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Samhita Wellness Website</h3>
+                            <p class="project-desc">
+                                Wellness & healthcare website with service categories, blog sections,
+                                gallery, and health tools including a BMI calculator.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML5</span>
+                                <span class="project-tag">CSS3</span>
+                                <span class="project-tag">Bootstrap</span>
+                                <span class="project-tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Modern Portfolio Sites -->
+                <div class="col-md-6 col-lg-4 project-item" data-category="react">
+                    <div class="project-card h-100">
+                        <div class="project-img-wrap">
+                            <img src="https://placehold.co/1200x800/0f172a/f472b6?text=Portfolio+Sites"
+                                alt="Modern Portfolio Sites" loading="lazy" />
+                            <div class="project-img-overlay"></div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Modern Portfolio Sites</h3>
+                            <p class="project-desc">
+                                Modern portfolio and business websites with advanced animations,
+                                scroll interactions, and responsive experiences.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">React.js</span>
+                                <span class="project-tag">Next.js</span>
+                                <span class="project-tag">Tailwind</span>
+                                <span class="project-tag">Motion.dev</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: School ERP -->
+                <div class="col-md-6 col-lg-4 project-item" data-category="php">
+                    <div class="project-card h-100">
+                        <div class="project-img-wrap">
+                            <img src="https://placehold.co/1200x800/0f172a/a78bfa?text=School+ERP"
+                                alt="School Management ERP" loading="lazy" />
+                            <div class="project-img-overlay"></div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">School Management ERP</h3>
+                            <p class="project-desc">
+                                Cloud-based platform automating academic, administrative, financial,
+                                transport, and communication operations for schools.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">PHP</span>
+                                <span class="project-tag">MySQL</span>
+                                <span class="project-tag">Tailwind</span>
+                                <span class="project-tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7: Car Workshop -->
+                <div class="col-md-6 col-lg-4 project-item" data-category="php">
+                    <div class="project-card h-100">
+                        <div class="project-img-wrap">
+                            <img src="https://placehold.co/1200x800/0f172a/fb923c?text=Car+Workshop"
+                                alt="Car Workshop Management System" loading="lazy" />
+                            <div class="project-img-overlay"></div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Car Workshop Management</h3>
+                            <p class="project-desc">
+                                Complete SaaS solution for car workshops covering job cards, billing,
+                                inventory tracking, and financial reporting.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">PHP</span>
+                                <span class="project-tag">MySQL</span>
+                                <span class="project-tag">Tailwind</span>
+                                <span class="project-tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8: Used Vehicle Management -->
+                <div class="col-md-6 col-lg-4 project-item" data-category="php">
+                    <div class="project-card h-100">
+                        <div class="project-img-wrap">
+                            <img src="https://placehold.co/1200x800/0f172a/34d399?text=Vehicle+Management"
+                                alt="Used Vehicle Management System" loading="lazy" />
+                            <div class="project-img-overlay"></div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Used Vehicle Management</h3>
+                            <p class="project-desc">
+                                Platform for managing second-hand vehicle inventory, sales, customer
+                                inquiries, and vehicle document verification tracking.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">PHP</span>
+                                <span class="project-tag">MySQL</span>
+                                <span class="project-tag">Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         EXPERIENCE SECTION
+    ══════════════════════════════════════════════ -->
+    <section id="experience" class="section-pad" aria-label="Work Experience">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="text-center mb-5 reveal">
+                        <p class="section-label">Career</p>
+                        <h2 class="section-title">Work Experience</h2>
+                        <p class="section-subtitle mx-auto">
+                            My professional journey building real-world products and mentoring developers.
+                        </p>
+                    </div>
+
+                    <div class="timeline">
+                        <!-- Experience Item -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2024 – Present</div>
+                            <h3 class="timeline-title">Full‑Stack Developer & Technical Trainer</h3>
+                            <p class="timeline-company">
+                                <i class="bi bi-buildings me-1" style="color:var(--accent-primary)"></i>
+                                Techzex Software Pvt Ltd · Bhubaneswar
+                            </p>
+
+                            <div class="timeline-body">
+                                <p class="timeline-subtitle">
+                                    <i class="bi bi-braces me-1"></i> Development Responsibilities
+                                </p>
+                                <ul class="timeline-list">
+                                    <li>Design, develop, and maintain web applications using Python, Django, PHP, MySQL,
+                                        React.js, Next.js, JavaScript, HTML, CSS, and Bootstrap.</li>
+                                    <li>Develop ERP systems, Employee Management Systems, Sales Management Systems, and
+                                        custom business solutions for diverse clients.</li>
+                                    <li>Integrate third-party APIs and external services into scalable web applications.
+                                    </li>
+                                    <li>Manage source code using Git and GitHub following version control best
+                                        practices.</li>
+                                </ul>
+
+                                <p class="timeline-subtitle">
+                                    <i class="bi bi-mortarboard me-1"></i> Training & Mentorship
+                                </p>
+                                <ul class="timeline-list">
+                                    <li>Conduct technical training sessions on Python, Django, PHP, HTML, CSS,
+                                        JavaScript, Bootstrap, and MySQL.</li>
+                                    <li>Mentor students and interns on real-world web development projects, debugging,
+                                        and deployment strategies.</li>
+                                    <li>Prepare students for industry requirements and technical interviews.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         CONTACT SECTION
+    ══════════════════════════════════════════════ -->
+    <section id="contact" class="section-pad" aria-label="Contact">
+        <div class="container">
+            <div class="text-center mb-5 reveal">
+                <p class="section-label">Get in Touch</p>
+                <h2 class="section-title">Let's Build Something Great</h2>
+                <p class="section-subtitle mx-auto">
+                    Open to full-time roles (Bhubaneswar / Remote) and freelance projects.
+                    Usually reply within a day.
+                </p>
+            </div>
+
+            <div class="row g-4 align-items-stretch">
+                <!-- Contact Info -->
+                <div class="col-lg-5 reveal-left">
+                    <div class="contact-info-card h-100">
+                        <h3 class="contact-info-title">Let's Connect</h3>
+                        <p class="contact-info-sub">
+                            Reach out through any channel and I'll get back to you quickly.
+                        </p>
+
+                        <a href="mailto:ashis966@gmail.com" class="contact-detail-item"
+                            aria-label="Send email to Ashis">
+                            <div class="contact-detail-icon"><i class="bi bi-envelope-fill"></i></div>
+                            <div>
+                                <div class="contact-detail-label">Email</div>
+                                <div class="contact-detail-value">ashis966@gmail.com</div>
+                            </div>
+                        </a>
+
+                        <a href="tel:+917008438639" class="contact-detail-item" aria-label="Call Ashis">
+                            <div class="contact-detail-icon"><i class="bi bi-telephone-fill"></i></div>
+                            <div>
+                                <div class="contact-detail-label">Phone</div>
+                                <div class="contact-detail-value">+91 70084 38639</div>
+                            </div>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/ashis966" target="_blank" rel="noopener"
+                            class="contact-detail-item" aria-label="LinkedIn Profile">
+                            <div class="contact-detail-icon"><i class="bi bi-linkedin"></i></div>
+                            <div>
+                                <div class="contact-detail-label">LinkedIn</div>
+                                <div class="contact-detail-value">linkedin.com/in/ashis966</div>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/Ashis966" target="_blank" rel="noopener" class="contact-detail-item"
+                            aria-label="GitHub Profile">
+                            <div class="contact-detail-icon"><i class="bi bi-github"></i></div>
+                            <div>
+                                <div class="contact-detail-label">GitHub</div>
+                                <div class="contact-detail-value">github.com/Ashis966</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="col-lg-7 reveal-right">
+                    <div class="contact-form-card h-100">
+                        <h3
+                            style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:var(--text-primary);margin-bottom:0.4rem;">
+                            Send a Message
+                        </h3>
+                        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.75rem;">
+                            Fill in the form and I'll get back to you as soon as possible.
+                        </p>
+
+                        <form id="contactForm" action="https://formspree.io/f/mwvdzepy" method="POST" novalidate>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <div class="form-floating-custom">
+                                        <input type="text" id="contactName" name="name" placeholder="Your Name" required
+                                            autocomplete="name" />
+                                        <label for="contactName">Your Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating-custom">
+                                        <input type="email" id="contactEmail" name="email" placeholder="Email Address"
+                                            required autocomplete="email" />
+                                        <label for="contactEmail">Email Address</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating-custom">
+                                        <input type="text" id="contactSubject" name="subject" placeholder="Subject" />
+                                        <label for="contactSubject">Subject</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating-custom">
+                                        <textarea id="contactMessage" name="message" rows="5" placeholder="Your Message"
+                                            required></textarea>
+                                        <label for="contactMessage">Your Message</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn-glow w-100" id="contactSubmitBtn"
+                                        style="justify-content:center;padding:0.9rem;">
+                                        <i class="bi bi-send"></i>
+                                        <span class="btn-text">Send Message</span>
+                                    </button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -438,27 +1001,105 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer py-4">
-        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
-            <div>© <span id="year"></span> Ashis Kumar. All rights reserved.</div>
-            <div class="d-flex gap-3">
-                <a href="#home" class="text-decoration-none"><i class="bi bi-arrow-up-circle"></i> Back to top</a>
+    <!-- ══════════════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════════════ -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-4">
+                    <div class="footer-brand">Ashis<span style="color:var(--accent-primary)">.</span></div>
+                    <p class="footer-tagline">Full‑Stack Developer & Technical Trainer</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/Ashis966" target="_blank" rel="noopener" class="footer-social-link"
+                            aria-label="GitHub">
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ashis966" target="_blank" rel="noopener"
+                            class="footer-social-link" aria-label="LinkedIn">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="mailto:ashis966@gmail.com" class="footer-social-link" aria-label="Email">
+                            <i class="bi bi-envelope"></i>
+                        </a>
+                        <a href="tel:+917008438639" class="footer-social-link" aria-label="Phone">
+                            <i class="bi bi-telephone"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 text-center">
+                    <p
+                        style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.65rem;text-transform:uppercase;letter-spacing:2px;">
+                        Built With
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                        <span class="glow-tag"><i class="bi bi-filetype-html"></i> HTML5</span>
+                        <span class="glow-tag"><i class="bi bi-filetype-css"></i> CSS3</span>
+                        <span class="glow-tag"><i class="bi bi-bootstrap"></i> Bootstrap 5</span>
+                        <span class="glow-tag"><i class="bi bi-filetype-js"></i> Vanilla JS</span>
+                    </div>
+                </div>
+
+                <div class="col-md-4 text-md-end">
+                    <nav class="footer-nav d-flex flex-wrap gap-3 justify-content-md-end mb-3"
+                        aria-label="Footer navigation">
+                        <a href="#about">About</a>
+                        <a href="#skills">Skills</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#contact">Contact</a>
+                        <a href="resume.html" target="_blank" rel="noopener">Resume</a>
+                    </nav>
+                    <p class="footer-copy">
+                        © <span id="year"></span> Ashis Kumar. All rights reserved.
+                    </p>
+                </div>
             </div>
+
+            <hr class="footer-divider" />
+
+            <p class="text-center footer-copy" style="font-size:0.75rem;">
+                Designed & built with <span style="color:#f87171;">♥</span> in Bhubaneswar, India
+            </p>
         </div>
     </footer>
 
-    <!-- ── Fixed Resume FAB Button ── -->
-    <a href="resume.html" target="_blank" class="resume-fab" id="resumeFab" title="View Resume">
+    <!-- ── Resume FAB ── -->
+    <a href="resume.html" target="_blank" rel="noopener" id="resumeFab" class="d-flex" aria-label="View Resume">
         <i class="bi bi-file-earmark-person"></i>
-        <span class="resume-fab-tooltip">View Resume</span>
+        <span class="fab-tooltip">View Resume</span>
     </a>
 
-    <!-- JS: Bootstrap, AOS, SweetAlert2, Animated Counters -->
+    <!-- ── Scroll to Top ── -->
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+        <i class="bi bi-arrow-up"></i>
+        <span class="fab-tooltip">Back to top</span>
+    </button>
+
+    <!-- ══════════════════════════════════════════════
+         SCRIPTS
+    ══════════════════════════════════════════════ -->
+    <!-- Bootstrap 5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="main.js"></script>
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+
+    <!-- Typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <!-- Vanilla Tilt -->
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script src="js/loader.js"></script>
+    <script src="js/animation.js"></script>
+    <script src="js/tilt.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 
