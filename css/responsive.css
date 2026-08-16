@@ -30,9 +30,14 @@
     }
 
     #home {
-        padding-top: 5rem;
-        padding-bottom: 4rem;
+        padding-top: 6.5rem;
+        padding-bottom: 3.5rem;
         min-height: auto;
+    }
+
+    .hero-eyebrow {
+        font-size: 0.8rem;
+        letter-spacing: 2.5px;
     }
 
     .hero-image-wrap {
@@ -121,8 +126,15 @@
     }
 
     #home {
-        padding-top: 4rem;
+        padding-top: 6rem;
         min-height: auto;
+    }
+
+    .hero-eyebrow {
+        font-size: 0.76rem;
+        letter-spacing: 2px;
+        line-height: 1.5;
+        margin-bottom: 1rem;
     }
 
     .hero-name {
@@ -253,6 +265,15 @@
 
 /* ── Extra Small (≤480px) ── */
 @media (max-width: 479.98px) {
+
+    #home {
+        padding-top: 5.5rem;
+    }
+
+    .hero-eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 1.5px;
+    }
 
     .btn-glow,
     .btn-outline-glow {

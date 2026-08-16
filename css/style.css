@@ -259,6 +259,10 @@ img {
 
 
 /* ── Section layout ── */
+section {
+    scroll-margin-top: 5.5rem;
+}
+
 .section-pad {
     padding: 7rem 0;
 }
